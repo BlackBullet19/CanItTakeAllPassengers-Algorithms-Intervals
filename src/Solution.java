@@ -6,7 +6,7 @@ import java.util.TreeMap;
 public class Solution {
 
     public static void main(String[] args) {
-        int[][] trips = new int[][]{{2, 1, 5,}, {3, 3, 7}, {4, 8, 9}, {2, 9, 10}, {2, 9, 11}};
+        int[][] trips = new int[][]{{2, 1, 5,}, {3, 3, 7}, {4, 8, 9}, {2, 9, 10}, {2, 9, 11}, {5, 11, 15}};
         int maximalPassengersCount = 5;
         System.out.println(solutionWithAlgo(maximalPassengersCount, trips));
         System.out.println(solutionBruteForce(maximalPassengersCount, trips));
@@ -43,6 +43,9 @@ public class Solution {
             }
             currentPassengerCount += trips[i][0];
             if(isPassengersTooMuch(maximalPassengerCount, currentPassengerCount)){
+                return false;
+            }
+            if(trips[i+1][0] > maximalPassengerCount){
                 return false;
             }
             if(trips[i][2] > trips[i+1][1]){
